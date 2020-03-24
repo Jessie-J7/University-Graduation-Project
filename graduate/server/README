@@ -1,0 +1,42 @@
+代码直接运行会报错，因为数据库没有初始化，没有注册模块。
+所以需要手动建立数据库和表，手动录入用户名、秘钥、用户根目录。
+先新建数据库 名为‘file_server’ 
+create database file_server
+
+再建立三张表 
+
+表1 ‘user’
+ CREATE TABLE `user` (
+`usrID` int(11) NOT NULL AUTO_INCREMENT,
+`usrname` varchar(256) NOT NULL,
+`salt` varchar(256) NOT NULL,
+`ciphertext` varchar(512) NOT NULL,
+`root` int(11) DEFAULT NULL,
+PRIMARY KEY (`usrID`),
+UNIQUE KEY `usrname` (`usrname`)); 
+
+表2 ‘file_server’
+
+ CREATE TABLE `file_system` (
+ `code` int(11) NOT NULL AUTO_INCREMENT,
+ `procode` int(11) NOT NULL,
+ `name` varchar(256) NOT NULL,
+ `owner` varchar(256) NOT NULL,
+ `type` varchar(2) DEFAULT NULL,
+ `md5` varchar(32) DEFAULT NULL,
+  `size` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`code`));
+
+表3 ‘storekeeper’
+ CREATE TABLE `storekeeper` (
+`fileID` int(11) NOT NULL AUTO_INCREMENT,
+`md5` varchar(33) DEFAULT NULL,					   
+`linked` int(11) DEFAULT '0',					     
+PRIMARY KEY (`fileID`));
+
+添加表项
+insert into user(usrname,salt,ciphertext,root) values('Eric','$6$k9BtQmFt$',' $6$k9BtQmFt$95Yj/iaq5fwC4CFzQS8rCtOekZyDbf3FKpEAcCNQBw8Vx6obu3nlitfBzWFMCVyihYoLuor.TqSuRsVSc3xf2.','0');
+
+按照类似格式添加其他用户和目录
+
+ps:遇到命令部分出现异常，如ls不显示路径，pwd显示的不是路径等情况时，退出服务器端和客户端再登录即可，对数据没有影响。
