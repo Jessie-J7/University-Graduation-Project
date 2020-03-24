@@ -1,11 +1,11 @@
 ## 安装提示
->安装Linux ubuntu 16.04版本。
->安装mysql:sudo apt-get install mysql-server mysql-client
+>安装Linux ubuntu 16.04版本.  
+>安装mysql:sudo apt-get install mysql-server mysql-client  
 
->启动数据库：mysql –u root –p
->先新建数据库 名为‘file_server’ 
->create database file_server；
->使用数据库：use file_server； 
+>启动数据库：mysql –u root –p  
+>先新建数据库 名为‘file_server’  
+>create database file_server;  
+>使用数据库：use file_server;   
 -------------------------------
 ## 表1 "user"
 
@@ -43,9 +43,9 @@ PRIMARY KEY (`fileID`));
 -------------------------------
 ## 添加表项
 
->insert into user(usrname,salt,ciphertext,root) values('faith','$6$db.ODI3L$',' >$6$db.ODI3L$ag50jYqT/OkZkBn91pmmjeIHx0qyHYUglPCw92yVC2Es40SWL2tc.gol6qYD6ZHGhLsyn38plYMlBTzUZidFb1','0');
+insert into user(usrname,salt,ciphertext,root) values('faith','$6$db.ODI3L$',' $6$db.ODI3L$ag50jYqT/OkZkBn91pmmjeIHx0qyHYUglPCw92yVC2Es40SWL2tc.gol6qYD6ZHGhLsyn38plYMlBTzUZidFb1','0');
 
->insert into user(usrname,salt,ciphertext,root) values('rose',' $6$EBaqDHVp$',' >$6$EBaqDHVp$53VomWKWUG/oXUmdQBAKATgCo9yU4ObiPryTOLgxKev.6XhOgqyqohtVc4xVj8vyODQD2bOj9WtqisrgpQWvh0','0');
+insert into user(usrname,salt,ciphertext,root) values('rose',' $6$EBaqDHVp$',' $6$EBaqDHVp$53VomWKWUG/oXUmdQBAKATgCo9yU4ObiPryTOLgxKev.6XhOgqyqohtVc4xVj8vyODQD2bOj9WtqisrgpQWvh0','0');
 
 -------------------------------
 ## 操作说明
